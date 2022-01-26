@@ -4,9 +4,8 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from .models import User
-from .serializers import UserSignUpRequestSerializer
-
-
+from .serializers import UserSignUpRequestSerializer, UserSignInRequestSerializer
+from .utils import user_signin
 # Create your views here.
 
 class UserSignUp(APIView):
@@ -32,5 +31,18 @@ class UserSignUp(APIView):
                 result['status'] = status.HTTP_404_NOT_FOUND
         else:
             result = {'result': serializer.errors, 'status': status.HTTP_404_NOT_FOUND}
+
+        return Response(result, status=result.get('status'))
+
+class UserSignIn(APIView):
+    def post(self, request, format=None):
+        data = JSONParser().parse(request)
+        serializer = UserSignInRequestSerializer(data=data)
+        result = {}
+        if serializer.is_valid():
+            result = user_signin.userSignIn(data)
+        else:
+            result['result'] = serializer.errors
+            result['status'] = status.HTTP_404_NOT_FOUND
 
         return Response(result, status=result.get('status'))

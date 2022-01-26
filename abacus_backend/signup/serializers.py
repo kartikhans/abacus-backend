@@ -5,3 +5,8 @@ class UserSignUpRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['name', 'email', 'password', 'phone', 'address']
+
+class UserSignInRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['email', 'phone', 'password']
