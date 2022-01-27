@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/abacus-backend.iml" filepath="$PROJECT_DIR$/.idea/abacus-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../HighCurrent/highcurrent_backend/.idea/highcurrent_backend.iml" filepath="$PROJECT_DIR$/../HighCurrent/highcurrent_backend/.idea/highcurrent_backend.iml" />
     </modules>
   </component>
 </project>
