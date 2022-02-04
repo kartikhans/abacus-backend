@@ -9,7 +9,7 @@ def add_product(data):
     price = data.get('price')
     product_obj = Product.objects.filter(name=name, category=category).first()
     if not product_obj:
-        product_obj = Product(name=name, description=description, price=price, category=category)
+        product_obj = Product(name=name, description=description, price=price, category=category, is_deleted=False)
         product_obj.save()
         result = dict(result='PRODUCT_CREATED_SUCCESSFULLY', product_pid=str(product_obj.uid),
                       status=status.HTTP_200_OK)
